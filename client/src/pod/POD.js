@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Accordion, Container, Row, Col, Image } from "react-bootstrap";
 
-import "./POD.css";
+const API_KEY =
+  process.env.API_KEY
 
 function POD() {
   const [nasa, setNasa] = useState([]);
-  const [click, setClick] = useState(false);
 
   useEffect(() => {
     fetch(
@@ -26,10 +27,6 @@ function POD() {
 
   const date = new Date().toString().split(" ").slice(0, 4).join(" ");
 
-  const clickHandler = () => {
-    setClick(!click);
-  };
-
   const YouTubeEmbed = (embedId) => (
     <div className="video-container">
       <iframe
@@ -45,19 +42,31 @@ function POD() {
   );
 
   return (
-    <div className="App today">
-      <p>Today's date is</p>
-      <p>{date}</p>
-      {(!image && <p>loading...</p>) || splitImage.includes("youtube") ? (
-        <>{YouTubeEmbed(image)}</>
-      ) : (
-        <img src={image} alt={nasa.title} />
-      )}
-
-      <p>{nasa.title}</p>
-      <button onClick={clickHandler}>Click for more info</button>
-      {click && <p>{nasa.explanation}</p>}
-    </div>
+    <Container>
+      <Row style={{ textAlign: "center", margin: "20px" }}>
+        <Col>
+          <h1>Astrology Picture of the Day</h1>
+          <h2>{date}</h2>
+        </Col>
+      </Row>
+      <Row style={{ margin: "20px" }}>
+        <Col>
+          {(!image && <p>loading...</p>) || splitImage.includes("youtube") ? (
+            <>{YouTubeEmbed(image)}</>
+          ) : (
+            <Image src={image} alt={nasa.title} />
+          )}
+        </Col>
+        <Col>
+          <Accordion>
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>{nasa.title}</Accordion.Header>
+              <Accordion.Body>{nasa.explanation}</Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

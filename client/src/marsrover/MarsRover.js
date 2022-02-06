@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Form, Button, Container, Row, Col } from "react-bootstrap";
 
 // import Header from "./Header";
 import MarsRoverCard from "./MarsRoverCard";
-
-import "./style.css";
 
 const MarsRover = () => {
   const [marsRover, setMarsRover] = useState({});
@@ -39,62 +38,66 @@ const MarsRover = () => {
 
   return (
     <>
-      <div className="options">
-        <div className="row">
-          <div className="col">
-            <h1>Select rover and camera angle you would like to view</h1>
-          </div>
-        </div>
-        <div className="row">
-          <form onSubmit={submitHandler}>
-            <div className="col">
-              <select value={rover} onChange={roverHandler}>
-                <option value="null">Select a Rover</option>
-                <option value="curiosity">Curiosity</option>
-                <option value="opportunity">Opportunity</option>
-                <option value="spirit">Spirit</option>
-              </select>
-            </div>
-            <div className="col">
-              <select value={camera} onChange={cameraHandler}>
-                <option value="null">Select a Camera Angle</option>
-                <option value="FHAZ">Front Hazard Avoidance Camera</option>
-                <option value="RHAZ">Rear Hazard Avoidance Camera</option>
-                <option value="MAST">Mast Camera</option>
-                <option value="CHEMCAM">Chemistry and Camera Complex</option>
-                <option value="MAHLI">Mars Hand Lens Imager</option>
-                <option value="MARDI">Mars Descent Imager</option>
-                <option value="NAVCAM">Navigation Camera</option>
-                <option value="PANCAM">Panoramic Camera</option>
-                <option value="MINITES">
-                  Miniature Thermal Emission Spectrometer
-                </option>
-              </select>
-            </div>
-            <div className="col">
-              <input
-                id="sol"
-                type="number"
-                name="sol"
-                placeholder="Sol Number"
-                min="1"
-                max="1000"
-                value={sol}
-                onChange={solHandler}
-                className="form-control"
-                required
-              />
-            </div>
-            <div className="col">
-              <button type="submit">Submit</button>
-            </div>
-          </form>
-        </div>
-        </div>
-        <div className="row">
-          <div>{click && <MarsRoverCard mars={marsRover.photos} />}</div>
-        </div>
-      
+      <Container>
+        <Row style={{ textAlign: "center", margin: "20px" }}>
+          <Form onSubmit={submitHandler}>
+            <Col>
+              <Form.Group className="mb-3" controlId="formSelectRover">
+                <Form.Select
+                  aria-label="Select a Rover"
+                  value={rover}
+                  onChange={roverHandler}
+                >
+                  <option>Select a Rover</option>
+                  <option value="curiosity">Curiosity</option>
+                  <option value="opportunity">Opportunity</option>
+                  <option value="spirit">Spirit</option>
+                </Form.Select>
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="mb-3" controlId="formSelectCamera">
+                <Form.Select
+                  aria-label="Select a Camera Angle"
+                  value={camera}
+                  onChange={cameraHandler}
+                >
+                  <option>Select a Camera Angle</option>
+                  <option value="FHAZ">Front Hazard Avoidance Camera</option>
+                  <option value="RHAZ">Rear Hazard Avoidance Camera</option>
+                  <option value="MAST">Mast Camera</option>
+                  <option value="CHEMCAM">Chemistry and Camera Complex</option>
+                  <option value="MAHLI">Mars Hand Lens Imager</option>
+                  <option value="MARDI">Mars Descent Imager</option>
+                  <option value="NAVCAM">Navigation Camera</option>
+                  <option value="PANCAM">Panoramic Camera</option>
+                  <option value="MINITES">
+                    Miniature Thermal Emission Spectrometer
+                  </option>
+                </Form.Select>
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Position of Sun</Form.Label>
+                <Form.Range
+                  min="1"
+                  max="1000"
+                  value={sol}
+                  onChange={solHandler}
+                />
+              </Form.Group>
+            </Col>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Form>
+        </Row>
+      </Container>
+
+      <div className="row">
+        <div>{click && <MarsRoverCard mars={marsRover.photos} marsInfo={marsRover}/>}</div>
+      </div>
     </>
   );
 };

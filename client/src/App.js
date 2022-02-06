@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import Menu from "./layout/Menu";
 import Layout from "./layout/Layout";
 
-import "./App.css";
+// import "./App.css";
 
 function App() {
   return (

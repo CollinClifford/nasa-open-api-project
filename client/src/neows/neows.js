@@ -17,7 +17,7 @@ const Neows = () => {
         console.log(error);
       });
   }, []);
-
+  console.log(nasa);
   return <>here</>;
 };
 

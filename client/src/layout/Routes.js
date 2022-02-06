@@ -1,6 +1,7 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 import Dashboard from "../dashboard/Dashboard";
 import POD from "../pod/POD";
+import NotFound from "./NotFound"
 import MarsRover from "../marsrover/MarsRover"
 import Neows from "../neows/neows";
 
@@ -22,6 +23,9 @@ const Routes = () => {
         </Route>
         <Route path="/marsrover">
           <MarsRover />
+        </Route>
+        <Route path="/NotFound">
+          <NotFound />
         </Route>
       </Switch>
     </>
