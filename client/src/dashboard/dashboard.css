@@ -19,7 +19,7 @@ header {
 }
 
 ul {
-  text-align: right;
+  text-align: left;
 }
 
 @media (max-width: 600px) {
