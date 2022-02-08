@@ -18,6 +18,10 @@ header {
   box-shadow: 5x 5px 5px;
 }
 
+ul {
+  text-align: right;
+}
+
 @media (max-width: 600px) {
   .image {
     display: none;
