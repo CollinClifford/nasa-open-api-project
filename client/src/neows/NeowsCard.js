@@ -1,4 +1,5 @@
 import { Container, Row, Col, Accordion } from "react-bootstrap";
+import "./neowsCard.css";
 
 const NeowsCard = (neowsInfo) => {
   let neo = [];
@@ -18,7 +19,7 @@ const NeowsCard = (neowsInfo) => {
   return (
     <>
       <Container>
-        <Row style={{ margin: "20px" }}>
+        <Row className="row">
           <Col>
             <table>
               {(neowsInfo &&
@@ -75,81 +76,46 @@ const NeowsCard = (neowsInfo) => {
                                   <strong>Name</strong>: {item.name}
                                 </Accordion.Header>
                                 <Accordion.Body>
-                                  <table
-                                    style={{
-                                      border: "1px solid black",
-                                      textAlign: "center",
-                                      width: "100%",
-                                    }}
-                                  >
-                                    <tr
-                                      style={{
-                                        border: "1px solid black",
-                                        backgroundColor: "lightblue",
-                                      }}
-                                    >
-                                      <th style={{ border: "1px solid black" }}>
-                                        date
-                                      </th>
-                                      <th style={{ border: "1px solid black" }}>
-                                        id
-                                      </th>
-                                      <th style={{ border: "1px solid black" }}>
+                                  <table>
+                                    <tr>
+                                      <th>date</th>
+                                      <th>id</th>
+                                      <th>
                                         Near Earth Object Reference Number
                                       </th>
-                                      <th style={{ border: "1px solid black" }}>
-                                        Absolute Magnitude
-                                      </th>
-                                      <th style={{ border: "1px solid black" }}>
+                                      <th>Absolute Magnitude</th>
+                                      <th>
                                         Minimum Estimated Diameter (in feet)
                                       </th>
-                                      <th style={{ border: "1px solid black" }}>
+                                      <th>
                                         Maximum Estimated Diameter (in feet)
                                       </th>
-                                      <th style={{ border: "1px solid black" }}>
-                                        Potentially Hazardous
-                                      </th>
-                                      <th style={{ border: "1px solid black" }}>
-                                        Sentry Objecy
-                                      </th>
+                                      <th>Potentially Hazardous</th>
+                                      <th>Sentry Objecy</th>
                                     </tr>
-                                    <tr style={{ border: "1px solid black" }}>
-                                      <td style={{ border: "1px solid black" }}>
-                                        {i}
-                                      </td>
-                                      <td style={{ border: "1px solid black" }}>
-                                        {item.id}
-                                      </td>
-                                      <td style={{ border: "1px solid black" }}>
-                                        {item.neo_reference_id}
-                                      </td>
-                                      <td style={{ border: "1px solid black" }}>
-                                        {item.absolute_magnitude_h}
-                                      </td>
-                                      <td style={{ border: "1px solid black" }}>
-                                        {miles.estimated_diameter_min}
-                                      </td>
-                                      <td style={{ border: "1px solid black" }}>
-                                        {miles.estimated_diameter_max}
-                                      </td>
-                                      <td style={{ border: "1px solid black" }}>
-                                        {bool}
-                                      </td>
-                                      <td style={{ border: "1px solid black" }}>
-                                        {sentBool}
-                                      </td>
+                                    <tr>
+                                      <td>{i}</td>
+                                      <td>{item.id}</td>
+                                      <td>{item.neo_reference_id}</td>
+                                      <td>{item.absolute_magnitude_h}</td>
+                                      <td>{miles.estimated_diameter_min}</td>
+                                      <td>{miles.estimated_diameter_max}</td>
+                                      <td>{bool}</td>
+                                      <td>{sentBool}</td>
                                     </tr>
                                   </table>
-                                  <strong>Close Approach Data</strong>
-                                  <br />
-                                  Time in Military at Closest Approach: {time}
-                                  <br />
-                                  Miss Distance in Miles: {missDis}
-                                  <br />
-                                  Relative Velocity (Kilometers/Seconds):{" "}
-                                  {relative}
-                                  <br />
-                                  Orbiting Body: {orbitingBody}
+                                  <p>
+                                    <strong>Close Approach Data</strong>
+                                    <br />
+                                    Time in Military at Closest Approach: {time}
+                                    <br />
+                                    Miss Distance in Miles: {missDis}
+                                    <br />
+                                    Relative Velocity (Kilometers/Seconds):{" "}
+                                    {relative}
+                                    <br />
+                                    Orbiting Body: {orbitingBody}
+                                  </p>
                                 </Accordion.Body>
                               </Accordion.Item>
                             </Accordion>

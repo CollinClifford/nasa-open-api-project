@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import NeowsCard from "./NeowsCard";
+import "./neowsCard.css";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const Neows = () => {
   const [nasa, setNasa] = useState([]);
-  const [error, setError] = useState(null);
   const [click, setClick] = useState(false);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -33,9 +33,8 @@ const Neows = () => {
 
   return (
     <>
-      {" "}
       <Container>
-        <Row style={{ margin: "20px" }}>
+        <Row className="row">
           <Form onSubmit={submitHandler}>
             <Col>
               <Form.Label>Select a Start Date</Form.Label>

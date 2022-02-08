@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Accordion, Container, Row, Col, Image } from "react-bootstrap";
+import "./pod.css";
 
-const API_KEY =
-  process.env.REACT_APP_API_KEY
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 function POD() {
   const [nasa, setNasa] = useState([]);
 
   useEffect(() => {
-    fetch(
-      `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`
-    )
+    fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`)
       .then((response) => response.json())
       .then(setNasa)
       .catch((error) => {
@@ -43,28 +41,28 @@ function POD() {
 
   return (
     <Container>
-      <Row style={{ textAlign: "center", margin: "20px" }}>
+      <Row className="row">
         <Col>
           <h1>Astrology Picture of the Day</h1>
           <h2>{date}</h2>
         </Col>
       </Row>
-      <Row style={{ margin: "20px" }}>
-        <Col>
+      <Row className="row">
+        <div className="col-sm-12 col-lg-6">
           {(!image && <p>loading...</p>) || splitImage.includes("youtube") ? (
             <>{YouTubeEmbed(image)}</>
           ) : (
-            <Image src={image} alt={nasa.title} style={{maxWidth: "100%", maxHeight: "100%"}}/>
+            <Image className="img" src={image} alt={nasa.title} />
           )}
-        </Col>
-        <Col>
+        </div>
+        <div className="col-sm-12 col-lg-6">
           <Accordion>
             <Accordion.Item eventKey="0">
               <Accordion.Header>{nasa.title}</Accordion.Header>
               <Accordion.Body>{nasa.explanation}</Accordion.Body>
             </Accordion.Item>
           </Accordion>
-        </Col>
+        </div>
       </Row>
     </Container>
   );

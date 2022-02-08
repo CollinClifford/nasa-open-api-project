@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import "./marsRover.css"
 
 // import Header from "./Header";
 import MarsRoverCard from "./MarsRoverCard";
@@ -41,7 +42,7 @@ const MarsRover = () => {
   return (
     <>
       <Container>
-        <Row style={{ textAlign: "center", margin: "20px" }}>
+        <Row className="row">
           <Form onSubmit={submitHandler}>
             <Col>
               <Form.Group className="mb-3" controlId="formSelectRover">

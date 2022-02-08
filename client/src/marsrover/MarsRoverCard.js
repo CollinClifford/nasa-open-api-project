@@ -1,5 +1,6 @@
 import React from "react";
 import { Carousel, Container, Row, Col } from "react-bootstrap";
+import "./marsRover.css";
 
 const MarsRoverCard = ({ mars }) => {
   let image = [];
@@ -11,19 +12,14 @@ const MarsRoverCard = ({ mars }) => {
 
   return (
     <>
-      <Container style={{ textAlign: "center" }}>
-        <Row style={{margin: "10px"}}>
+      <Container className="con">
+        <Row className="row">
           <Col>
             {(image.length > 0 && (
               <Carousel fade>
                 {image.map((img, index) => (
                   <Carousel.Item key={img}>
-                    <img
-                      // className="testimonialImages d-block w-50"
-                      src={img}
-                      alt={img}
-                      style={{ maxWidth: "100%", maxHeight: "100%" }}
-                    />
+                    <img className="img" src={img} alt={img} />
                     <Carousel.Caption>
                       <p>
                         {index + 1} of {image.length}
