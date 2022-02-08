@@ -31,7 +31,7 @@ const Dashboard = () => {
                 allows users to search for Astroids based on their closest
                 approach date to Earth, as well as look up Astroids based on
                 NASA JPL small body ID and browse overal data pertaining to
-                NeoWs. <em>Not available yet.</em>
+                NeoWs.
               </li>
               <li>
                 <strong>

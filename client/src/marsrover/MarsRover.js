@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 
 // import Header from "./Header";
 import MarsRoverCard from "./MarsRoverCard";
+
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const MarsRover = () => {
   const [marsRover, setMarsRover] = useState({});
@@ -14,7 +16,7 @@ const MarsRover = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     fetch(
-      `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=uKhGhSdAakKNP5bkpWNEaMniMoyNrQAwtqLmNqXH`
+      `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${API_KEY}`
     )
       .then((response) => response.json())
       .then(setMarsRover)
@@ -96,7 +98,11 @@ const MarsRover = () => {
       </Container>
 
       <div className="row">
-        <div>{click && <MarsRoverCard mars={marsRover.photos} marsInfo={marsRover}/>}</div>
+        <div>
+          {click && (
+            <MarsRoverCard mars={marsRover.photos} marsInfo={marsRover} />
+          )}
+        </div>
       </div>
     </>
   );

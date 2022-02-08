@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Accordion, Container, Row, Col, Image } from "react-bootstrap";
 
 const API_KEY =
-  process.env.API_KEY
+  process.env.REACT_APP_API_KEY
 
 function POD() {
   const [nasa, setNasa] = useState([]);
 
   useEffect(() => {
     fetch(
-      `https://api.nasa.gov/planetary/apod?api_key=uKhGhSdAakKNP5bkpWNEaMniMoyNrQAwtqLmNqXH`
+      `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`
     )
       .then((response) => response.json())
       .then(setNasa)
@@ -54,7 +54,7 @@ function POD() {
           {(!image && <p>loading...</p>) || splitImage.includes("youtube") ? (
             <>{YouTubeEmbed(image)}</>
           ) : (
-            <Image src={image} alt={nasa.title} />
+            <Image src={image} alt={nasa.title} style={{maxWidth: "100%", maxHeight: "100%"}}/>
           )}
         </Col>
         <Col>
